@@ -47,7 +47,7 @@
   </style>
   <h1>
     <a href="index.html" download="storage_viewer.html">DOWNLOAD</a>
-    <a href="file:///sdcard">VIEW FILES</a>
+    <button id="redirect">VIEW FILES</button>
     <button id="view-button">View Here</button>
   </h1>
   <div id="viewer"></div>
@@ -60,12 +60,18 @@
     },1000);
   };
   let viewer = document.querySelector('#viewer');
+  let redirect = document.querySelector('#viewer');
   let viewerBtn = document.querySelector('#view-btn');
   if (viewerBtn) {
     viewerBtn.on('click', (e) => {
       fetch('file:///sdcard').then(data => {
         viewer.innerHTML = data;
       })
+    })
+  }
+  if (redirect) {
+    redirect.addEventListener('click', (e) => {
+      location.replace('file:///sdcard')
     })
   }
   </script>
